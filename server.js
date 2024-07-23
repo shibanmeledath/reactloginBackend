@@ -8,7 +8,11 @@ connectDB();
 const app = express()
 
 //Middleware
-app.use(cors());
+app.use(cors({
+    origin: '*', // Update this to be more secure
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(bodyParser.json());
 
 app.use('/api/auth', authRoutes);
